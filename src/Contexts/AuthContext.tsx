@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { api } from '../services/api';
+import { api } from '../services/emailService';
 
 interface AuthContextType {
   user: any | null;
@@ -22,7 +22,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (email: string, password: string) => {
     try {
-      const response = await api.('/login', { email, password });
+      const response = await api.post('/login', { email, password });
       const data = response.data as { user: any; token: string };
       setUser(data.user);
       localStorage.setItem('token', data.token);

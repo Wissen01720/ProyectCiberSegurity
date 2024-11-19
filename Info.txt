@@ -1,0 +1,36 @@
+# Proyecto de Ciberseguridad
+
+Este proyecto tiene como objetivo desarrollar una aplicación de ciberseguridad que permita a los usuarios registrarse, iniciar sesión y gestionar su perfil. Además, la aplicación incluye funcionalidades para detectar patrones inseguros en las páginas web y mostrar advertencias a los usuarios.
+
+## Tecnologías Utilizadas
+
+- **PostgreSQL**: Base de datos relacional utilizada para almacenar la información de los usuarios y otros datos relevantes.
+- **PostgREST**: Servidor que convierte la base de datos PostgreSQL en una API RESTful.
+- **React**: Biblioteca de JavaScript para construir interfaces de usuario.
+- **Zustand**: Biblioteca para la gestión del estado en React.
+- **Axios**: Cliente HTTP para realizar solicitudes a la API de PostgREST.
+- **Material-UI**: Biblioteca de componentes de interfaz de usuario para React.
+
+## Configuración del Proyecto
+
+### Base de Datos
+
+El script SQL `create-table-template.sql` se utiliza para crear las tablas, funciones y políticas necesarias en la base de datos PostgreSQL. Asegúrate de ejecutar este script en tu base de datos para configurar correctamente el esquema.
+
+### Configuración de PostgREST
+
+El archivo `postgrest.conf` contiene la configuración necesaria para PostgREST. Asegúrate de que este archivo esté configurado correctamente y que PostgREST esté apuntando al esquema correcto.
+
+```properties
+# postgrest.conf
+db-uri = "postgres://postgres:password@127.0.0.1:5432/cibersegurity"
+db-schema = "public, auth"
+db-anon-role = "anon"
+server-host = "127.0.0.1"
+server-port = 3000
+
+## Para que nuestro postgrest se ejecute debemos de utilizar el siguiente comando
+postgrest postgrest.conf
+
+## para correr un proyecto de React
+npm run dev
